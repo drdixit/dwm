@@ -23,7 +23,7 @@ static const char *const autostart[] = {
 	"xset", "s", "off", NULL, /* Disable screen saver (no blanking, no dimming) */
 	"xset", "-dpms", NULL, /* Disable Display Power Management (no standby, suspend, or power-off) */
 	"dbus-update-activation-environment", "--systemd", "--all", NULL, /* Don't Exactly know which variables are updated but it's good idea to run it with startup, seen on forms */
-	"xrdb", "-merge", "~/.Xresources", NULL,
+	"sh", "-c", "/usr/bin/xrdb -merge ~/.Xresources", NULL,
 	"sh", "-c", "/usr/bin/feh --randomize --no-fehbg --bg-fill ~/wallpapers", NULL, /* wallpaper */
 	"/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1", NULL, /* Policykit / Authentication Agent */
 	"sh", "-c", "while :; do ~/dwm/dwmstatus.sh -; sleep 60; done", NULL,
