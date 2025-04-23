@@ -13,3 +13,4 @@ get_datetime() {
 }
 
 xsetroot -name "   $(get_datetime)   $(get_charge)% ($(get_charging_status))   ";
+
