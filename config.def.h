@@ -6,8 +6,8 @@ static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=10" };
-static const char dmenufont[]       = "monospace:size=10";
+static const char *fonts[]          = { "IosevkaTerm Nerd Font Mono:size=10" };
+static const char dmenufont[]       = "IosevkaTerm Nerd Font Mono:size=10";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -20,12 +20,15 @@ static const char *colors[][3]      = {
 };
 
 static const char *const autostart[] = {
+// i think i dont need this	"dbus-update-activation-environment", "--systemd", "--all", NULL, /* Don't Exactly know which variables are updated but it's good idea to run it with startup, seen on forms */
 	"xset", "s", "off", NULL, /* Disable screen saver (no blanking, no dimming) */
 	"xset", "-dpms", NULL, /* Disable Display Power Management (no standby, suspend, or power-off) */
-	"dbus-update-activation-environment", "--systemd", "--all", NULL, /* Don't Exactly know which variables are updated but it's good idea to run it with startup, seen on forms */
 	"sh", "-c", "/usr/bin/xrdb -merge ~/.Xresources", NULL,
 	"sh", "-c", "/usr/bin/feh --randomize --no-fehbg --bg-fill ~/wallpapers", NULL, /* wallpaper */
 	"/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1", NULL, /* Policykit / Authentication Agent */
+    "/usr/bin/dunst", NULL,
+    "/usr/bin/picom", "--experimental-backends", NULL,
+    "sh", "-c", "/home/user/.cargo/bin/rustyvibes ~/soundpacks/soundpacks/nk-cream", NULL,
 	"sh", "-c", "while :; do ~/dwm/dwmstatus.sh -; sleep 60; done", NULL,
 	NULL /* terminate */
 };
@@ -69,7 +72,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, "-l", "20", NULL };
 static const char *termcmd[]  = { "xterm", NULL };
 
 static const char *upvol[]      = { "/usr/bin/wpctl",   "set-volume", "@DEFAULT_AUDIO_SINK@",      "5%+",   "-l", "1",   NULL };
