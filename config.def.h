@@ -26,7 +26,8 @@ static const char *const autostart[] = {
 	"sh", "-c", "/usr/bin/xrdb -merge ~/.Xresources", NULL,
 	"sh", "-c", "/usr/bin/feh --randomize --no-fehbg --bg-fill ~/wallpapers", NULL, /* wallpaper */
 	"/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1", NULL, /* Policykit / Authentication Agent */
-    "/usr/bin/dunst", NULL,
+    "/usr/lib/notification-daemon/notification-daemon", NULL, /* this is gnome one */
+//    "/usr/bin/dunst", NULL,
     "/usr/bin/picom", "--experimental-backends", NULL,
     "sh", "-c", "/home/user/.cargo/bin/rustyvibes ~/soundpacks/soundpacks/nk-cream", NULL,
 	"sh", "-c", "while :; do ~/dwm/dwmstatus.sh -; sleep 60; done", NULL,
