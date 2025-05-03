@@ -1,0 +1,32 @@
+services:
+    db:
+        image: mysql:latest
+        environment:
+            MYSQL_DATABASE: lamp_docker
+            MYSQL_USER: lamp_docker
+            MYSQL_PASSWORD: password
+            MYSQL_ROOT_PASSWORD: root_password
+        volumes:
+            - "./db_data:/var/lib/mysql"
+    www:
+        image: php:8.2-apache
+        volumes:
+            - "./root:/var/www/html"
+        ports:
+            - "8081:80"
+            - "8443:443"
+#            - "80:80"
+#            - "443:443"
+        build:
+            context: .
+        depends_on:
+            - db
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        ports:
+            - "127.0.0.1:8082:80"
+        environment:
+            - PMA_HOST=db
+        depends_on:
+            - db
+
