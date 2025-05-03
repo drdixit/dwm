@@ -1,0 +1,10 @@
+Host github.com-drdixit
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/github.com-drdixit
+  IdentitiesOnly yes
+Host github.com-dixitbhuva
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/github.com-dixitbhuva
+  IdentitiesOnly yes
